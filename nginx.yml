@@ -12,19 +12,19 @@
       name: ['nginx']
       state: latest
 
-  - name: "create www directory"
-    file:
-      path: /var/www/default
-      state: directory
-      mode: '0775'
-      owner: "ubuntu"
-      group: "ubuntu"
+  # - name: "create www directory"
+  #   file:
+  #     path: /var/www/default
+  #     state: directory
+  #     mode: '0775'
+  #     owner: "ubuntu"
+  #     group: "ubuntu"
 
-  - name: delete default nginx site
-    file:
-      path: /etc/nginx/sites-enabled/default
-      state: absent
-    notify: restart nginx
+  # - name: delete default nginx site
+  #   file:
+  #     path: /etc/nginx/sites-enabled/default
+  #     state: absent
+  #   notify: restart nginx
 
   - name: copy nginx site.conf
     template:
