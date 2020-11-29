@@ -1,5 +1,6 @@
-- hosts: web
-  become: yes
+- name: "Ansible setup"
+  hosts: localhost
+  connection: local 
   tasks:
   - name: "apt-get update"
     apt:
@@ -13,11 +14,11 @@
 
   - name: "create www directory"
     file:
-      path: /var/www/{{ domain }}
+      path: /var/www/default
       state: directory
       mode: '0775'
-      owner: "{{ ansible_user }}"
-      group: "{{ ansible_user }}"
+      owner: "ubuntu"
+      group: "ubuntu"
 
   - name: delete default nginx site
     file:
@@ -28,7 +29,7 @@
   - name: copy nginx site.conf
     template:
       src: site.conf.j2
-      dest: /etc/nginx/sites-enabled/{{ domain }}
+      dest: /etc/nginx/sites-enabled/default
       owner: root
       group: root
       mode: '0644'
