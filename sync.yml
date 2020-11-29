@@ -1,4 +1,6 @@
-- hosts: web
+- name: "Ansible setup"
+  hosts: localhost
+  connection: local 
   tasks:
   - name: "sync website"
     synchronize:
