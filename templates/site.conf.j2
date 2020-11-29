@@ -3,7 +3,9 @@ server {
   listen [::]:80;
   server_name default;
   root /var/www/default;
+
   location / {
     try_files $uri $uri/ =404;
   }
+  
 }
